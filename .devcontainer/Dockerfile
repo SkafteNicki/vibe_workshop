@@ -6,8 +6,8 @@ RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# Install OpenCode globally
-RUN npm install -g opencode-ai
+# Install OpenCode and Ralphy globally
+RUN npm install -g opencode-ai ralphy-cli
 
-# Verify installation
-RUN opencode --version
+# Verify installations
+RUN opencode --version && ralphy --version

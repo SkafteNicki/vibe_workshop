@@ -1,6 +1,6 @@
 # OpenCode Dev Container
 
-A minimal development container with OpenCode pre-installed.
+A minimal development container with OpenCode and Ralphy pre-installed.
 
 ## Quick Start
 
@@ -28,8 +28,29 @@ The configuration in `opencode.json` sets up all default agents (build, plan, ge
 - Ubuntu base image
 - Node.js LTS
 - OpenCode AI coding agent
+- Ralphy - Autonomous AI coding loop
 - Git
 - Pre-configured `opencode.json` with free model setup
+
+## Using Ralphy
+
+Ralphy is an autonomous AI coding loop that works with OpenCode. It can work through tasks one by one or in parallel:
+
+```bash
+# Single task
+ralphy "add dark mode toggle" --opencode
+
+# From a PRD file
+ralphy --prd PRD.md --opencode
+
+# From GitHub issues
+ralphy --github owner/repo --label "ai-task" --opencode
+
+# Run tasks in parallel
+ralphy --prd PRD.md --parallel --max-parallel 5 --opencode
+```
+
+For more information, visit [ralphy.goshen.fyi](https://ralphy.goshen.fyi/)
 
 ## Documentation
 
