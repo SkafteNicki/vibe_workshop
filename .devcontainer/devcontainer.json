@@ -1,0 +1,16 @@
+{
+  "name": "OpenCode Workspace",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      },
+      "extensions": []
+    }
+  },
+  "postCreateCommand": "opencode --version",
+  "remoteUser": "vscode"
+}
