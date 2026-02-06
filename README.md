@@ -27,8 +27,12 @@ The configuration in `opencode.json` sets up all default agents (build, plan, ge
 
 - Ubuntu base image
 - Node.js LTS
+- Python 3 with pip
 - OpenCode AI coding agent
 - Ralphy - Autonomous AI coding loop
+- Pyright - Python static type checker
+- uv - Python package and tool manager
+- Specify CLI - GitHub spec-kit tool
 - Git
 - Pre-configured `opencode.json` with free model setup
 
