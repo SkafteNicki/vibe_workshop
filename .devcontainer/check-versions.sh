@@ -13,7 +13,14 @@ ralphy --version
 
 echo ""
 echo "Get Shit Done CC:"
-get-shit-done-cc --version
+if [ -f "/root/.config/opencode/get-shit-done/VERSION" ]; then
+    cat "/root/.config/opencode/get-shit-done/VERSION"
+elif [ -f "$HOME/.config/opencode/get-shit-done/VERSION" ]; then
+    cat "$HOME/.config/opencode/get-shit-done/VERSION"
+else
+    echo "GSD not found in OpenCode config directory"
+    exit 1
+fi
 
 echo ""
 echo "Pyright:"

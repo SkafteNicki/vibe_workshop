@@ -18,8 +18,11 @@ RUN curl -LsSf https://astral.sh/uv/install.sh | sh
 # Add uv to PATH
 ENV PATH="/root/.local/bin:${PATH}"
 
-# Install OpenCode, Ralphy, and get-shit-done-cc globally
-RUN npm install -g opencode-ai ralphy-cli get-shit-done-cc
+# Install OpenCode and Ralphy globally
+RUN npm install -g opencode-ai ralphy-cli
+
+# Install get-shit-done-cc for OpenCode
+RUN npx get-shit-done-cc --opencode --global
 
 # Install pyright for Python type checking using uv
 RUN uv tool install pyright
