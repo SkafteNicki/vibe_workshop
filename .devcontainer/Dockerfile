@@ -18,8 +18,8 @@ RUN curl -LsSf https://astral.sh/uv/install.sh | sh
 # Add uv to PATH
 ENV PATH="/root/.local/bin:${PATH}"
 
-# Install OpenCode and Ralphy globally
-RUN npm install -g opencode-ai ralphy-cli
+# Install OpenCode, Ralphy, and get-shit-done-cc globally
+RUN npm install -g opencode-ai ralphy-cli get-shit-done-cc
 
 # Install pyright for Python type checking using uv
 RUN uv tool install pyright
@@ -27,5 +27,9 @@ RUN uv tool install pyright
 # Install specify-cli from GitHub spec-kit
 RUN uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
 
-# Verify installations
-RUN opencode --version && ralphy --version && pyright --version && specify --help > /dev/null
+# Copy version check script and make it executable
+COPY check-versions.sh /usr/local/bin/check-versions.sh
+RUN chmod +x /usr/local/bin/check-versions.sh
+
+# Verify installations using the script
+RUN /usr/local/bin/check-versions.sh

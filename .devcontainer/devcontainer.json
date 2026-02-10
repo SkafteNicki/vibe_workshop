@@ -16,6 +16,6 @@
       "extensions": []
     }
   },
-  "postCreateCommand": "opencode --version",
+  "postCreateCommand": "bash /usr/local/bin/check-versions.sh",
   "remoteUser": "vscode"
 }
