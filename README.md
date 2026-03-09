@@ -61,3 +61,12 @@ For more information, visit [ralphy.goshen.fyi](https://ralphy.goshen.fyi/)
 For more information on using OpenCode, visit:
 - [OpenCode Documentation](https://opencode.ai/docs)
 - [OpenCode GitHub](https://github.com/anomalyco/opencode)
+
+## References
+https://www.oneusefulthing.org/p/giving-your-ai-a-job-interview
+https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/
+https://openai.com/index/gdpval/
+https://arxiv.org/abs/2510.04374
+https://github.com/github/spec-kit
+https://www.oneusefulthing.org/p/management-as-ai-superpower
+https://www.youtube.com/watch?v=a9eR1xsfvHg
