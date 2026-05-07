@@ -1,0 +1,13 @@
+[skill]
+name = "skill-creator"
+origin = "imported"
+
+[repo]
+path = "skills/meta/skill-creator"
+domain = "meta"
+
+[source]
+type = "github"
+url = "https://github.com/tldraw/tldraw/tree/main/skills/skill-creator"
+degit = "tldraw/tldraw/skills/skill-creator#main"
+notes = "Imported from the tldraw repository"
