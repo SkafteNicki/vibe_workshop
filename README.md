@@ -75,6 +75,25 @@ Your Codespace already includes:
 - Pyright
 - Git
 
+## Exercises
+
+When you are ready, start with the exercises:
+
+1. Open `exercises/01-create-a-skill.md`
+2. Build a simple skill that turns meeting notes into action items
+3. Then open `exercises/02-improve-a-skill.md`
+4. Improve that skill by testing it on a harder example
+5. Then open `exercises/03-plan-prd-build.md`
+6. Read the case in `exercises/case.md`, turn it into a PRD, and build a prototype
+
+These exercises are designed for beginners and use plain language throughout.
+
+For all exercises, use this workflow:
+
+1. Start in `plan` mode
+2. Talk through the task with the agent first
+3. Press `Tab` to switch to `build` mode when you are ready for it to create or change files
+
 ## If You Get Stuck
 
 That is normal.
