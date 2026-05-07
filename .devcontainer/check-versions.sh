@@ -8,8 +8,8 @@ echo "OpenCode:"
 opencode --version
 
 echo ""
-echo "Ralphy:"
-ralphy --version
+echo "Pi:"
+pi --version
 
 echo ""
 echo "uv:"
