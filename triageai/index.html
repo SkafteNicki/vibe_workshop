@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TriageAI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="min-h-screen bg-slate-950 text-slate-100">
+    <main class="mx-auto flex min-h-screen max-w-6xl flex-col gap-6 px-4 py-8 sm:px-6 lg:px-8">
+      <section class="rounded-3xl border border-slate-800 bg-slate-900/80 p-6 shadow-2xl shadow-slate-950/40">
+        <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+          <div class="max-w-2xl">
+            <p class="text-sm uppercase tracking-[0.3em] text-cyan-300">Workshop prototype</p>
+            <h1 class="mt-2 text-4xl font-semibold tracking-tight text-white">TriageAI</h1>
+            <p class="mt-3 text-base leading-7 text-slate-300">
+              Paste a support ticket and get a structured triage result powered by OpenRouter.
+            </p>
+          </div>
+          <div class="rounded-2xl border border-cyan-400/30 bg-cyan-400/10 px-4 py-3 text-sm text-cyan-100">
+            Tip: if the backend does not already have an API key, paste your OpenRouter key below for this session.
+          </div>
+        </div>
+      </section>
+
+      <section class="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
+        <div class="rounded-3xl border border-slate-800 bg-slate-900 p-6">
+          <label class="mb-2 block text-sm font-medium text-slate-200" for="apiKey">OpenRouter API key</label>
+          <input
+            id="apiKey"
+            type="password"
+            placeholder="Optional if OPENROUTER_API_KEY is already set on the server"
+            class="mb-5 w-full rounded-2xl border border-slate-700 bg-slate-950 px-4 py-3 text-sm text-slate-100 outline-none ring-0 placeholder:text-slate-500 focus:border-cyan-400"
+          />
+
+          <label class="mb-2 block text-sm font-medium text-slate-200" for="ticketText">Customer ticket</label>
+          <textarea
+            id="ticketText"
+            rows="16"
+            class="w-full rounded-3xl border border-slate-700 bg-slate-950 px-4 py-4 text-sm leading-6 text-slate-100 outline-none placeholder:text-slate-500 focus:border-cyan-400"
+            placeholder="Paste a raw customer ticket here..."
+          >I was charged twice this month and nobody has responded to my last three emails. This is completely unacceptable. I want a refund immediately or I'm disputing with my bank.</textarea>
+
+          <div class="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <button
+              id="triageButton"
+              class="inline-flex items-center justify-center rounded-2xl bg-cyan-400 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300 disabled:cursor-not-allowed disabled:bg-slate-700 disabled:text-slate-400"
+            >
+              Triage Ticket
+            </button>
+            <button
+              id="sampleButton"
+              class="inline-flex items-center justify-center rounded-2xl border border-slate-700 px-5 py-3 text-sm font-semibold text-slate-200 transition hover:border-slate-500 hover:text-white"
+            >
+              Load Example
+            </button>
+            <p id="status" class="text-sm text-slate-400"></p>
+          </div>
+        </div>
+
+        <div class="rounded-3xl border border-slate-800 bg-slate-900 p-6">
+          <div class="flex items-center justify-between">
+            <h2 class="text-lg font-semibold text-white">Triage Result</h2>
+            <span id="healthBadge" class="rounded-full border border-slate-700 px-3 py-1 text-xs text-slate-300">Checking...</span>
+          </div>
+
+          <div id="emptyState" class="mt-8 rounded-3xl border border-dashed border-slate-700 bg-slate-950/60 p-6 text-sm leading-6 text-slate-400">
+            Your structured result will appear here after you run the triage.
+          </div>
+
+          <div id="resultCard" class="mt-6 hidden space-y-5">
+            <div class="grid gap-3 sm:grid-cols-2">
+              <div class="rounded-2xl bg-slate-950 p-4">
+                <p class="text-xs uppercase tracking-[0.2em] text-slate-500">Priority</p>
+                <p id="priority" class="mt-2 text-lg font-semibold text-white"></p>
+              </div>
+              <div class="rounded-2xl bg-slate-950 p-4">
+                <p class="text-xs uppercase tracking-[0.2em] text-slate-500">Category</p>
+                <p id="category" class="mt-2 text-lg font-semibold text-white"></p>
+              </div>
+              <div class="rounded-2xl bg-slate-950 p-4">
+                <p class="text-xs uppercase tracking-[0.2em] text-slate-500">Sentiment</p>
+                <p id="sentiment" class="mt-2 text-lg font-semibold text-white"></p>
+              </div>
+              <div class="rounded-2xl bg-slate-950 p-4">
+                <p class="text-xs uppercase tracking-[0.2em] text-slate-500">Escalate</p>
+                <p id="escalate" class="mt-2 text-lg font-semibold text-white"></p>
+              </div>
+            </div>
+
+            <section class="rounded-2xl bg-slate-950 p-4">
+              <p class="text-xs uppercase tracking-[0.2em] text-slate-500">Summary</p>
+              <p id="summary" class="mt-3 text-sm leading-6 text-slate-200"></p>
+            </section>
+
+            <section class="rounded-2xl bg-slate-950 p-4">
+              <p class="text-xs uppercase tracking-[0.2em] text-slate-500">Escalation Reason</p>
+              <p id="escalateReason" class="mt-3 text-sm leading-6 text-slate-200"></p>
+            </section>
+
+            <section class="rounded-2xl bg-slate-950 p-4">
+              <p class="text-xs uppercase tracking-[0.2em] text-slate-500">Draft Reply</p>
+              <p id="draftReply" class="mt-3 whitespace-pre-wrap text-sm leading-6 text-slate-200"></p>
+            </section>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const sampleText = `I was charged twice this month and nobody has responded to my last three emails. This is completely unacceptable. I want a refund immediately or I'm disputing with my bank.`;
+
+      const triageButton = document.getElementById("triageButton");
+      const sampleButton = document.getElementById("sampleButton");
+      const ticketText = document.getElementById("ticketText");
+      const apiKey = document.getElementById("apiKey");
+      const statusText = document.getElementById("status");
+      const healthBadge = document.getElementById("healthBadge");
+      const emptyState = document.getElementById("emptyState");
+      const resultCard = document.getElementById("resultCard");
+
+      const fields = {
+        priority: document.getElementById("priority"),
+        category: document.getElementById("category"),
+        sentiment: document.getElementById("sentiment"),
+        summary: document.getElementById("summary"),
+        draft_reply: document.getElementById("draftReply"),
+        escalate: document.getElementById("escalate"),
+        escalate_reason: document.getElementById("escalateReason"),
+      };
+
+      function setStatus(message, tone = "muted") {
+        statusText.textContent = message;
+        statusText.className = tone === "error" ? "text-sm text-rose-300" : "text-sm text-slate-400";
+      }
+
+      function renderResult(result) {
+        fields.priority.textContent = result.priority;
+        fields.category.textContent = result.category;
+        fields.sentiment.textContent = result.sentiment;
+        fields.summary.textContent = result.summary;
+        fields.draft_reply.textContent = result.draft_reply;
+        fields.escalate.textContent = result.escalate ? "Yes" : "No";
+        fields.escalate_reason.textContent = result.escalate_reason;
+
+        emptyState.classList.add("hidden");
+        resultCard.classList.remove("hidden");
+      }
+
+      async function checkHealth() {
+        try {
+          const response = await fetch("/health");
+          const data = await response.json();
+          healthBadge.textContent = `Ready · ${data.model}`;
+          healthBadge.className = "rounded-full border border-emerald-500/40 bg-emerald-500/10 px-3 py-1 text-xs text-emerald-200";
+        } catch {
+          healthBadge.textContent = "Server unavailable";
+          healthBadge.className = "rounded-full border border-rose-500/40 bg-rose-500/10 px-3 py-1 text-xs text-rose-200";
+        }
+      }
+
+      async function runTriage() {
+        const text = ticketText.value.trim();
+        if (!text) {
+          setStatus("Paste a ticket before running the triage.", "error");
+          return;
+        }
+
+        triageButton.disabled = true;
+        setStatus("Running triage...");
+
+        try {
+          const response = await fetch("/triage", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ text, api_key: apiKey.value.trim() || null }),
+          });
+
+          const payload = await response.json();
+          if (!response.ok) {
+            throw new Error(payload.detail || "The request failed.");
+          }
+
+          renderResult(payload);
+          setStatus("Triage complete.");
+        } catch (error) {
+          setStatus(error.message || "Something went wrong.", "error");
+        } finally {
+          triageButton.disabled = false;
+        }
+      }
+
+      sampleButton.addEventListener("click", () => {
+        ticketText.value = sampleText;
+        setStatus("Loaded the sample ticket.");
+      });
+
+      triageButton.addEventListener("click", runTriage);
+      checkHealth();
+    </script>
+  </body>
+</html>
