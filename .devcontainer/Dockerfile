@@ -18,8 +18,8 @@ RUN curl -LsSf https://astral.sh/uv/install.sh | env UV_INSTALL_DIR=/usr/local/b
 # Install OpenCode and Pi globally
 RUN npm install -g opencode-ai @mariozechner/pi-coding-agent
 
-# Install pyright for Python type checking using uv
-RUN uv tool install --tool-dir /usr/local/bin pyright
+# Install pyright for Python type checking using pip so the binary is on PATH
+RUN python3 -m pip install --break-system-packages pyright
 
 # Copy version check script and make it executable
 COPY check-versions.sh /usr/local/bin/check-versions.sh
