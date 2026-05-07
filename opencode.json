@@ -1,4 +1,11 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "autoupdate": true,
+  "agent": {
+    "plan": {
+      "model": "openrouter/anthropic/claude-sonnet-4.6"
+    },
+    "build": {
+      "model": "openrouter/anthropic/claude-sonnet-4.6"
+    }
+  }
 }

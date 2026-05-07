@@ -1,72 +1,87 @@
-# OpenCode Dev Container
+# Vibe Coding Workshop
 
-A minimal development container with OpenCode and Ralphy pre-installed.
+This repository is the starting point for the workshop.
 
-## Quick Start
+When you open the Codespace, everything you need is already prepared for you. You do not need to install anything manually.
 
-1. Open this repository in VS Code
-2. When prompted, click "Reopen in Container" (or run the command "Dev Containers: Reopen in Container")
-3. Wait for the container to build and start
-4. Open the integrated terminal and run:
-   ```bash
-   opencode
-   ```
+## First Steps
 
-## First Time Setup
-
-This workspace is pre-configured to use the **Kimi K2.5 Free** model from Moonshot AI. After starting OpenCode for the first time:
-
-1. Run the `/connect` command in OpenCode
-2. Search for and select **Moonshot AI**
-3. Get your free API key from [platform.moonshot.ai](https://platform.moonshot.ai/console)
-4. Enter the API key when prompted
-
-The configuration in `opencode.json` sets up all default agents (build, plan, general, explore) to use the free model.
-
-## What's Included
-
-- Ubuntu base image
-- Node.js LTS
-- Python 3 with pip
-- OpenCode AI coding agent
-- Ralphy - Autonomous AI coding loop
-- Pyright - Python static type checker
-- uv - Python package and tool manager
-- Specify CLI - GitHub spec-kit tool
-- Git
-- Pre-configured `opencode.json` with free model setup
-
-## Using Ralphy
-
-Ralphy is an autonomous AI coding loop that works with OpenCode. It can work through tasks one by one or in parallel:
+1. Open a terminal in Codespaces.
+2. Type this and press Enter:
 
 ```bash
-# Single task
-ralphy "add dark mode toggle" --opencode
-
-# From a PRD file
-ralphy --prd PRD.md --opencode
-
-# From GitHub issues
-ralphy --github owner/repo --label "ai-task" --opencode
-
-# Run tasks in parallel
-ralphy --prd PRD.md --parallel --max-parallel 5 --opencode
+opencode
 ```
 
-For more information, visit [ralphy.goshen.fyi](https://ralphy.goshen.fyi/)
+This starts OpenCode, which is the AI assistant you will use during the workshop.
 
-## Documentation
+## Connect Your Model Provider
 
-For more information on using OpenCode, visit:
-- [OpenCode Documentation](https://opencode.ai/docs)
-- [OpenCode GitHub](https://github.com/anomalyco/opencode)
+To let OpenCode talk to an AI model, connect it to OpenRouter.
+
+1. Open the OpenRouter dashboard.
+2. Click `Create API Key`.
+3. Copy the API key.
+4. In OpenCode, type:
+
+```text
+/connect
+```
+
+5. Search for `OpenRouter`.
+6. Paste the API key when asked.
+
+```text
+┌ API key
+│
+│
+└ enter
+```
+
+## Pick A Model
+
+OpenCode can work with many different models.
+
+If you want to choose one yourself, type:
+
+```text
+/models
+```
+
+You can also see available models from the terminal with:
+
+```bash
+opencode models
+```
+
+## Default Model Setup In This Workshop
+
+This workshop already includes a default setup in `opencode.json`.
+
+- The `plan` agent uses `openrouter/anthropic/claude-sonnet-4.6`
+- The `build` agent uses `openrouter/anthropic/claude-sonnet-4.6`
+
+In practice, this means the workshop already points important OpenCode tasks to Sonnet by default.
+
+## What Is Already Included
+
+Your Codespace already includes:
+
+- OpenCode
+- Pi
+- Node.js
+- Python
+- uv
+- Pyright
+- Git
+
+## If You Get Stuck
+
+That is normal.
+
+The goal of the workshop is not to memorize commands. The goal is to practice working with AI tools in a calm, hands-on way.
 
 ## References
-https://www.oneusefulthing.org/p/giving-your-ai-a-job-interview
-https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/
-https://openai.com/index/gdpval/
-https://arxiv.org/abs/2510.04374
-https://github.com/github/spec-kit
-https://www.oneusefulthing.org/p/management-as-ai-superpower
-https://www.youtube.com/watch?v=a9eR1xsfvHg
+
+- [OpenCode Documentation](https://opencode.ai/docs)
+- [OpenCode GitHub](https://github.com/anomalyco/opencode)

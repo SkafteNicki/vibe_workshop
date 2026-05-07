@@ -13,22 +13,13 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # Install uv (Python package and tool manager)
-RUN curl -LsSf https://astral.sh/uv/install.sh | sh
+RUN curl -LsSf https://astral.sh/uv/install.sh | env UV_INSTALL_DIR=/usr/local/bin sh
 
-# Add uv to PATH
-ENV PATH="/root/.local/bin:${PATH}"
-
-# Install OpenCode and Ralphy globally
-RUN npm install -g opencode-ai ralphy-cli
-
-# Install get-shit-done-cc for OpenCode
-RUN npx get-shit-done-cc --opencode --global
+# Install OpenCode and Pi globally
+RUN npm install -g opencode-ai @mariozechner/pi-coding-agent
 
 # Install pyright for Python type checking using uv
-RUN uv tool install pyright
-
-# Install specify-cli from GitHub spec-kit
-RUN uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
+RUN uv tool install --tool-dir /usr/local/bin pyright
 
 # Copy version check script and make it executable
 COPY check-versions.sh /usr/local/bin/check-versions.sh
