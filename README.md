@@ -77,14 +77,13 @@ Your Codespace already includes:
 
 ## Exercises
 
-When you are ready, start with the exercises:
+Pick the exercise that matches your comfort level. You can also do them in order.
 
-1. Open `exercises/01-create-a-skill.md`
-2. Build a simple skill that turns meeting notes into action items
-3. Then open `exercises/02-improve-a-skill.md`
-4. Improve that skill by testing it on a harder example
-5. Then open `exercises/03-plan-prd-build.md`
-6. Read the case in `exercises/case.md`, turn it into a PRD, and build a prototype
+| Level | Exercise | What You Will Do |
+|---|---|---|
+| Easy | `exercises/01-create-and-improve-a-skill.md` | Create a skill that turns meeting notes into action items, then test and improve it |
+| Medium | `exercises/03-plan-prd-build.md` | Read a product case, write a plan, and build a small prototype |
+| Hard | `exercises/04-your-own-idea.md` | Bring your own idea, shape it with AI, stress-test it, and build it |
 
 These exercises are designed for beginners and use plain language throughout.
 
