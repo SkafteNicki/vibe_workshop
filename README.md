@@ -17,7 +17,7 @@ This starts OpenCode, which is the AI assistant you will use during the workshop
 
 ## Connect Your Model Provider
 
-To let OpenCode talk to an AI model, connect it to OpenRouter.
+To let OpenCode talk to an AI model, connect it to OpenRouter. You will be given a key the course instructor, but else you would normally follow these 4 steps to get one.
 
 1. Open the OpenRouter dashboard.
 2. Click `Create API Key`.
