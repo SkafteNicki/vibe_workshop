@@ -85,6 +85,10 @@ When you are ready, start with the exercises:
 4. Improve that skill by testing it on a harder example
 5. Then open `exercises/03-plan-prd-build.md`
 6. Read the case in `exercises/case.md`, turn it into a PRD, and build a prototype
+7. Then open `exercises/04-add-an-eval-loop.md`
+8. Measure the quality of what you built, make one improvement, and compare before and after results
+9. Then open `exercises/05-harden-against-tricky-inputs.md`
+10. Test your skill or prototype against tricky inputs and improve how it handles uncertainty and weak input
 
 These exercises are designed for beginners and use plain language throughout.
 
